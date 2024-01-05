@@ -19,7 +19,7 @@ try {
     }
 
     # Define variables for Sysmon installation
-    $SysmonUrl = "https://github.com/kinnairdt/Scripts/blob/main/Sysmon/Sysmon64.exe" # download URL for Sysmon
+    $SysmonUrl = "https://github.com/oloruntolaallbert/powershell/blob/main/Sysmon64.exe" # download URL for Sysmon
     $SysmonDest = "$env:TEMP\Sysmon64.exe"
     $SysmonConfigUrl = "https://raw.githubusercontent.com/kinnairdt/Scripts/main/mdr-supporting-files-main/sysmon_config_schema4_0.xml" # URL to Sysmon configuration XML
     $SysmonConfigDest = "$env:TEMP\sysmonconfig.xml"
