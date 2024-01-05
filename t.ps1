@@ -1,7 +1,7 @@
 #param(
-    [Parameter(Mandatory = $true, HelpMessage = "Sensor IP is required.")]
-    [string]$SensorIP
-)
+ #   [Parameter(Mandatory = $true, HelpMessage = "Sensor IP is required.")]
+  #  [string]$SensorIP
+#)
 
 # Set ThreadOptions to ReuseThread if possible to help mitigate memory leaks
 if (($ver = $host | Select-Object -ExpandProperty Version).Major -gt 1) {
