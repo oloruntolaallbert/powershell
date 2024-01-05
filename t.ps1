@@ -1,4 +1,4 @@
-param(
+#param(
     [Parameter(Mandatory = $true, HelpMessage = "Sensor IP is required.")]
     [string]$SensorIP
 )
