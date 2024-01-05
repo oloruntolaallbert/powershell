@@ -1,5 +1,5 @@
 Invoke-WebRequest "https://raw.githubusercontent.com/olafhartong/sysmon-modular/master/sysmonconfig.xml" -OutFile sysmonlatest.xml -UseBasicParsing
-Invoke-WebRequest "https://github.com/kinnairdt/Scripts/blob/main/mdr-supporting-files-main/sysmon.zip" -OutFile "sysmon.zip" -UseBasicParsing
+Invoke-WebRequest "https://github.com/oloruntolaallbert/powershell/blob/main/sysmon.zip" -OutFile "sysmon.zip" -UseBasicParsing
 Expand-Archive "sysmon.zip" -Force
 
 if ([Environment]::Is64BitOperatingSystem) {
