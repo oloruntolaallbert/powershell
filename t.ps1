@@ -60,11 +60,6 @@ try {
         }
     )
 
-    # Additional logic related to sensors may be added here...
-
-    # If the whole script succeeds, you may want to notify via webhook
-    # Send notification to Teams webhook for success (code to send a notification goes here)
-
 } catch {
     # Handle exceptions
     Write-Error $_.Exception.Message
@@ -81,4 +76,3 @@ try {
         exit
     }
 }
-    # Send notification to Teams webhook for failure (code to send a notification goes here)
