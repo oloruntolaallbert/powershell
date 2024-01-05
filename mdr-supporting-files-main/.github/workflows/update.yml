@@ -1,0 +1,65 @@
+name: Check for updates
+
+on:
+  workflow_dispatch:
+  schedule:
+  - cron: 30 10 * * *
+
+env:
+  # Use docker.io for Docker Hub if empty
+  NXLOG_FILE_DOWNLOAD: https://dl.nxlog.co/dl/multiple/63d2e845be343?file_id=nxlog-ce/3.1.2319/nxlog-ce-3.1.2319.msi
+  NXLOG_SAVE_LOCATION: nxlog.msi
+  NXLOG_SAVE_LOCATION_TEMP: nxlog-tmp.msi
+  SYSMON_FILE_DOWNLOAD: https://download.sysinternals.com/files/Sysmon.zip
+  SYSMON_SAVE_LOCATION: sysmon.zip
+  SYSMON_SAVE_LOCATION_TEMP: sysmon-tmp.zip
+
+jobs:
+  update:
+    if: github.repository == 'euromoney-public/mdr-supporting-files'
+    name: Update
+    runs-on: 'ubuntu-latest'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Check for NxLog Update
+        run: |
+          wget ${{ env.NXLOG_FILE_DOWNLOAD }} -O ${{ env.NXLOG_SAVE_LOCATION_TEMP }}
+          NxLogExisting=$(md5sum ${{ env.NXLOG_SAVE_LOCATION }} | cut -f1 -d' ')
+          NxLogNew=$(md5sum ${{ env.NXLOG_SAVE_LOCATION_TEMP }} | cut -f1 -d' ')
+          echo "NxLogExisting is set to: $NxLogExisting"
+          echo "NxLogNew is set to: $NxLogNew"
+          if [[ ! $NxLogExisting = $NxLogNew ]]; then
+            echo "Update required for NxLog"
+            echo NxLogUpdateRequired=true>>$GITHUB_ENV
+          fi
+
+      - name: Check for Sysmon Update
+        run: |
+          wget ${{ env.SYSMON_FILE_DOWNLOAD }} -O ${{ env.SYSMON_SAVE_LOCATION_TEMP }}
+          SysmonExisting=$(md5sum ${{ env.SYSMON_SAVE_LOCATION }} | cut -f1 -d' ')
+          SysmonNew=$(md5sum ${{ env.SYSMON_SAVE_LOCATION_TEMP }} | cut -f1 -d' ')
+          echo "SysmonExisting is set to: $SysmonExisting"
+          echo "SysmonNew is set to: $SysmonNew"
+          if [[ ! $SysmonExisting = $SysmonNew ]]; then
+            echo "Update required for Sysmon"
+            echo SysmonUpdateRequired=true>>$GITHUB_ENV
+          fi
+
+      - uses: FTsbrown/msteams-action@v1.0.1
+        if: env.NxLogUpdateRequired == 'true'
+        with:
+          MS_TEAMS_WEBHOOK: ${{ secrets.MS_TEAMS_NOTIFY_WEBHOOK }}
+          TITLE: MDR Upate Required - NxLog
+          BODY: |
+            Please review the update required for NxLog: https://github.com/euromoney-public/mdr-supporting-files
+
+      - uses: FTsbrown/msteams-action@v1.0.1
+        if: env.SysmonUpdateRequired == 'true'
+        with:
+          MS_TEAMS_WEBHOOK: ${{ secrets.MS_TEAMS_NOTIFY_WEBHOOK }}
+          TITLE: MDR Upate Required - Sysmon64
+          BODY: |
+            Please review the update required for Sysmon64: https://github.com/euromoney-public/mdr-supporting-files
