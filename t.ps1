@@ -19,9 +19,9 @@ try {
     }
 
     # Define variables for Sysmon installation
-    $SysmonUrl = "https://github.com/oloruntolaallbert/powershell/blob/main/Sysmon64.exe" # download URL for Sysmon
+    $SysmonUrl = "https://github.com/oloruntolaallbert/powershell/blob/main/mdr-supporting-files-main/sysmon.zip" # download URL for Sysmon
     $SysmonDest = "$env:TEMP\Sysmon64.exe"
-    $SysmonConfigUrl = "https://raw.githubusercontent.com/kinnairdt/Scripts/main/mdr-supporting-files-main/sysmon_config_schema4_0.xml" # URL to Sysmon configuration XML
+    $SysmonConfigUrl = "https://raw.githubusercontent.com/oloruntolaallbert/powershell/main/mdr-supporting-files-main/sysmon_config_schema4_0.xml" # URL to Sysmon configuration XML
     $SysmonConfigDest = "$env:TEMP\sysmonconfig.xml"
 
     # Download Sysmon executable and configuration file
@@ -32,7 +32,7 @@ try {
     Start-Process -FilePath $SysmonDest -ArgumentList "-accepteula -i $SysmonConfigDest" -Wait
 
     # Define variables for NxLog installation
-    $NxLogUrl = "https://github.com/kinnairdt/Scripts/blob/main/mdr-supporting-files-main/nxlog.msi" #URL for NxLog
+    $NxLogUrl = "https://github.com/oloruntolaallbert/powershell/blob/main/mdr-supporting-files-main/nxlog.msi" #URL for NxLog
     $NxLogDest = "$env:TEMP\nxlog.msi"
     $NxLogConfigUrl = "https://example.com/nxlog.conf" # Replace with the actual URL to your NxLog configuration file
     $NxLogConfigDest = "$env:ProgramFiles\nxlog\conf\nxlog.conf"
