@@ -63,8 +63,8 @@ $UpdateScriptLocation = "Update.ps1"
 $UpdateScriptContents = "W05ldC5TZXJ2aWNlUG9pbnRNYW5hZ2VyXTo6U2VjdXJpdHlQcm90b2NvbCA9IFtOZXQuU2VjdXJpdHlQcm90b2NvbFR5cGVdOjpUbHMxMg0KSUVYKE5ldy1PYmplY3QgTmV0LldlYmNsaWVudCkuRG93bmxvYWRTdHJpbmcoJ2h0dHBzOi8vc2VudGluZWxjb25maWdzdG9yZS5ibG9iLmNvcmUud2luZG93cy5uZXQvZXVyb20vQ2xhcmFuZXQtTURSLnBzMT9zcD1yJnN0PTIwMjMtMTItMDNUMjA6MTI6MTJaJnNlPTIwMjUtMTItMDRUMDQ6MTI6MTJaJnNwcj1odHRwcyZzdj0yMDIyLTExLTAyJnNyPWImc2lnPVN5ODdvQmo2Wlg5bThlTGFIUnRyUWdZWWtZekQwelpUcXdTcnp5NGtMZUElM0QnKTsgVXBkYXRlLU54TG9nQ29uZmlnRmlsZQ0="
 $UpdateScriptTaskName = 'MDR Update Script'
 
-$TeamsWebhookSuccess = "https://claranet.webhook.office.com/webhookb2/82cd37f6-5167-4f0f-92f0-8fa8b76316d4@f87a7640-3b94-4bbd-b5fa-b4c15947cf56/IncomingWebhook/f25c2709833743249310475f3f1cbf07/e2225c96-c5fa-4534-adbd-5e2e72b4861d"
-$TeamsWebhookFailure = "https://claranet.webhook.office.com/webhookb2/82cd37f6-5167-4f0f-92f0-8fa8b76316d4@f87a7640-3b94-4bbd-b5fa-b4c15947cf56/IncomingWebhook/17b5af965e824de294dd5ac82533384d/e2225c96-c5fa-4534-adbd-5e2e72b4861d"
+$TeamsWebhookSuccess = "https://claranet.webhook.office.com/webhookb2/82cd37f6-5167-4f0f-92f0-8fa8b76316d4@f87a7640-3b94-4bbd-b5fa-b4c15947cf56/IncomingWebhook/a11c24fb91a14de7b8b5cf37bb565657/b1e2c795-f63c-4fc1-85bf-0c7f2621c084"
+$TeamsWebhookFailure = "https://claranet.webhook.office.com/webhookb2/82cd37f6-5167-4f0f-92f0-8fa8b76316d4@f87a7640-3b94-4bbd-b5fa-b4c15947cf56/IncomingWebhook/a11c24fb91a14de7b8b5cf37bb565657/b1e2c795-f63c-4fc1-85bf-0c7f2621c084"
 $IconUrl = "https://github.com/oloruntolaallbert/powershell/blob/main/mdr-supporting-files-main/images/windows-server-400px-400px.png"
 $LocalMachineDNSName = [Net.Dns]::GetHostByName($env:COMPUTERNAME).HostName
 $LocalMachineIPAddress = [Net.Dns]::GetHostByName($env:COMPUTERNAME).AddressList[0].IPAddressToString
